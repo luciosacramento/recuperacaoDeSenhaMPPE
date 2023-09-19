@@ -1,3 +1,23 @@
-<div ><!--*ngIf="user.profile">-->
-    <router-outlet></router-outlet>
+<div class="login-container">
+    <div class="title-login">
+        <div><img src="../assets/images/logo-mppe.png" alt=""></div>
+    </div>
+    <hr/>
+    <router-outlet><!--*ngIf="user.profile">-->
+
+    </router-outlet>
+</div>
+
+<div id="aviso-esqueceu" *ngIf="actualPage()==='recuperarsenha'">
+    <div>
+        <mat-icon>error_outline</mat-icon>
+    </div>
+    <div>
+        Caso não lembre de um ou mais campos, entre em 
+contato com a CMGP - coordenadoria de Gestão de
+ Pessoas pelo email demape@mppe.mp.br ou pelo 
+telefone (81) 99192-6539
+    </div>
+    
+
 </div>

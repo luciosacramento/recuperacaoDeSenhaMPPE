@@ -1,2 +1,46 @@
-<p>esqueceu-senha works!</p>
-gdgdfgdf
+<h4>Esqueceu sua senha?</h4>
+<span class="subtitulo">Informe os dados abaixo para começarmos o cadasro de uma nova senha.</span>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label for="login">Login</mat-label>
+          <input matInput placeholder="Login" id="login" formControlName="login">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="matricula">Matrícula</mat-label>
+            <input matInput placeholder="Matrícula" id="matricula" formControlName="matricula">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="cpf">CPF</mat-label>
+            <input matInput placeholder="CPF" id="cpf" formControlName="cpf" [formControl]="cpfFormControl"  [errorStateMatcher]="matcher">
+            <mat-error *ngIf="cpfFormControl.hasError('required')">
+                CPF é <strong>obrigatório</strong>
+            </mat-error>
+            <mat-error *ngIf="cpfFormControl.hasError('cpfInvalido') && !cpfFormControl.hasError('required')">
+                Digite um CPF <strong>válido</strong>
+            </mat-error>    
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="email-pessoal">E-mail pessoal</mat-label>
+            <input matInput placeholder="E-mail pessoal" id="emailpessoal" [formControl]="emailFormControl"  [errorStateMatcher]="matcher">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Por favor, informe um <strong>e-mail válido</strong>
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email é <strong>obrigatório</strong>
+            </mat-error>           
+        </mat-form-field>
+      </p>
+
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <button mat-raised-button color="warn" type="submit">Enviar</button>
+    </div>
+    <div class="col-4">
+        <a href="#" class="bt-cancelar">Cancelar</a>
+    </div>
+  </div>    
+
+</form>
+
