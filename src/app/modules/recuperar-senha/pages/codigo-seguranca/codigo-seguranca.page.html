@@ -1,0 +1,27 @@
+<h4>Informe o código de segurança</h4>
+<span class="subtitulo">Foi enviado um código para o telefone (71)991****44. Insira-o no campo abaixo e prossiga com a criação da nova senha.</span>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label for="sms">Código de segurança (SMS)</mat-label>
+        <input matInput  id="sms" formControlName="smsFormControl" [formControl]="smsFormControl"  [errorStateMatcher]="matcher">
+        <mat-error *ngIf="smsFormControl.hasError('required')">
+          O Código de Segurança é <strong>obrigatório</strong>
+      </mat-error>
+      </mat-form-field>
+    </p>
+
+    <h4><a href="#">Reenviar Código</a></h4>
+
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+      <button mat-raised-button color="warn" type="submit">Enviar</button>
+  </div>
+  <div class="col-4">
+      <a href="#" class="bt-cancelar">Cancelar</a>
+  </div>
+</div>    
+
+</form>
+

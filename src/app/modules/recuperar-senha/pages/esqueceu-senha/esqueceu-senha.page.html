@@ -4,15 +4,21 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label for="login">Login</mat-label>
-          <input matInput placeholder="Login" id="login" formControlName="login">
+          <input matInput placeholder="Login" id="login" formControlName="loginFormControl" [formControl]="loginFormControl"  [errorStateMatcher]="matcher">
+          <mat-error *ngIf="loginFormControl.hasError('required')">
+            Login é <strong>obrigatório</strong>
+        </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label for="matricula">Matrícula</mat-label>
-            <input matInput placeholder="Matrícula" id="matricula" formControlName="matricula">
+            <input matInput placeholder="Matrícula" id="matricula" formControlName="matriculaFormControl" [formControl]="matriculaFormControl"  [errorStateMatcher]="matcher">
+            <mat-error *ngIf="matriculaFormControl.hasError('required')">
+                Matrícula é <strong>obrigatório</strong>
+            </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label for="cpf">CPF</mat-label>
-            <input matInput placeholder="CPF" id="cpf" formControlName="cpf" [formControl]="cpfFormControl"  [errorStateMatcher]="matcher">
+            <input type="number" matInput placeholder="CPF" id="cpf" formControlName="cpfFormControl" [formControl]="cpfFormControl"  [errorStateMatcher]="matcher" placeholder="Ex. 99999999999">
             <mat-error *ngIf="cpfFormControl.hasError('required')">
                 CPF é <strong>obrigatório</strong>
             </mat-error>
@@ -22,7 +28,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label for="email-pessoal">E-mail pessoal</mat-label>
-            <input matInput placeholder="E-mail pessoal" id="emailpessoal" [formControl]="emailFormControl"  [errorStateMatcher]="matcher">
+            <input matInput placeholder="E-mail pessoal" id="emailpessoal" [formControl]="emailFormControl"  [errorStateMatcher]="matcher" placeholder="Ex. eu@exemplo.com">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Por favor, informe um <strong>e-mail válido</strong>
             </mat-error>

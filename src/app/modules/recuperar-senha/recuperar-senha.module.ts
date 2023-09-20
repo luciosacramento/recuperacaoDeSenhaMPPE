@@ -13,6 +13,5 @@ import { RecuperarSenhaRoutingModule } from './recuperar-senha-routing.module';
 })
 export class RecuperarSenhaModule {
   constructor() {
-    console.log("RecuperarSenhaModule");
   }
  }

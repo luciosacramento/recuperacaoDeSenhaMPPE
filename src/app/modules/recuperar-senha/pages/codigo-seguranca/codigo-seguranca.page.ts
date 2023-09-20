@@ -6,8 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { NgIf } from '@angular/common';
 import { Utils } from 'src/app/core/utils';
-
-import { Validadores } from 'src/app/core/validadores';
 import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,33 +16,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-esqueceu-senha',
-  templateUrl: './esqueceu-senha.page.html',
-  styleUrls: ['./esqueceu-senha.page.scss'],
+  selector: 'app-codigo-seguranca',
+  templateUrl: './codigo-seguranca.page.html',
+  styleUrls: ['./codigo-seguranca.page.scss'],
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatButtonModule,NgIf]
-})
-export class EsqueceuSenhaPage {
+
+  })
+  export class CodigoSegurancaPage {
 
    public profileForm: FormGroup;
    public matcher:MyErrorStateMatcher = new MyErrorStateMatcher();
-   public  emailFormControl:any|null = null
-   public  cpfFormControl:any|null = null
-   public  loginFormControl:any|null = null
-   public  matriculaFormControl:any|null = null
+   public  smsFormControl:any|null = null
 
    constructor(fb: FormBuilder, private util:Utils, private router: Router) { 
 
-     this.emailFormControl  = new FormControl('', [Validators.required, Validators.email])
-     this.cpfFormControl    = new FormControl('',Validators.compose([Validators.required, Validadores.ValidaCpf]));
-     this.loginFormControl =  new FormControl('',[Validators.required]);
-     this.matriculaFormControl =  new FormControl('',[Validators.required]);
+     this.smsFormControl =  new FormControl('',[Validators.required]);
 
      this.profileForm = new FormGroup({
-        emailFormControl: this.emailFormControl,
-        cpfFormControl: this.cpfFormControl,
-        loginFormControl: this.loginFormControl,
-        matriculaFormControl: this.matriculaFormControl
+        smsFormControl: this.smsFormControl,
      });
 
     }
@@ -52,9 +42,9 @@ export class EsqueceuSenhaPage {
 
     onSubmit() {
       if (this.profileForm.valid) {
-        this.router.navigate(['/codigo-seguranca']);
+        //this.router.navigate(['/codigo-seguranca']);
       } else {
-        this.util.exibirErro("Preencha o(s) campo(s) obrigatório(s)");
+        this.util.exibirErro("Código inválido.");
       }
     }
 

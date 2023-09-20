@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from './core/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(protected user:User,private router: Router) {
+  constructor(private router: Router) {
     
   }
 
