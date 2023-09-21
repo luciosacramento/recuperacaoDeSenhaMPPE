@@ -1,5 +1,5 @@
 <h4>Informe o código de segurança</h4>
-<span class="subtitulo">Foi enviado um código para o telefone (71)991****44. Insira-o no campo abaixo e prossiga com a criação da nova senha.</span>
+<span class="subtitulo" *ngIf="telefone">Foi enviado um código para o telefone {{telefone}}. Insira-o no campo abaixo e prossiga com a criação da nova senha.</span>
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <p>
       <mat-form-field appearance="outline">
@@ -11,7 +11,7 @@
       </mat-form-field>
     </p>
 
-    <h4><a href="#">Reenviar Código</a></h4>
+    <h4><a (click)="reenviarCodigo()">Reenviar Código</a></h4>
 
 <div class="row">
   <div class="col-4"></div>
@@ -19,7 +19,7 @@
       <button mat-raised-button color="warn" type="submit">Enviar</button>
   </div>
   <div class="col-4">
-      <a href="#" class="bt-cancelar">Cancelar</a>
+      <a (click)="cancelar()" class="bt-cancelar">Cancelar</a>
   </div>
 </div>    
 

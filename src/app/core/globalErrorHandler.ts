@@ -95,12 +95,7 @@ export class GlobalErrorHandler implements ErrorHandler {
                 window.location.reload();
                 return;
             } 
-             //Trata o erro do keycloack quando não consegue validar o acesso ao rest
-            //Ocorre, por exemplo, quando o servidor REST está fora do ar
-            if(msg.includes("during access validation")){
-                msg="Foi impossível validar o acesso ao serviço solicitado. Por favor, tente mais tarde ou entre em contato com o suporte técnico.";
-                err=new Error(msg);
-            }
+            
         }
 
         this.exibirErro(msg);
@@ -110,12 +105,6 @@ export class GlobalErrorHandler implements ErrorHandler {
     exibirErro(msg: string) {
         if (this.toastr) {
             setTimeout(() => this.toastr.error(msg, ''));
-             //Trata o erro do keycloack quando não consegue validar o acesso ao rest
-            //Ocorre, por exemplo, quando o servidor REST está fora do ar
-            if(msg.includes("during access validation")){
-                msg="Foi impossível validar o acesso ao serviço solicitado. Por favor, tente mais tarde ou entre em contato com o suporte técnico.";
-                
-            }
         } else {
             console.log('Erro:', msg);
         }

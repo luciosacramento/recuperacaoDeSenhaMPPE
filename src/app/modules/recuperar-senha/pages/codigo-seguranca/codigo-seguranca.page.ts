@@ -28,6 +28,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
    public profileForm: FormGroup;
    public matcher:MyErrorStateMatcher = new MyErrorStateMatcher();
    public  smsFormControl:any|null = null
+   public telefone:string|null = "(71)991****44";
 
    constructor(fb: FormBuilder, private util:Utils, private router: Router) { 
 
@@ -41,12 +42,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     
 
     onSubmit() {
-      if (this.profileForm.valid) {
-        //this.router.navigate(['/codigo-seguranca']);
+      if (this.profileForm.valid && this.smsFormControl.value == "123") {
+        this.util.exibirSucesso("Código válido.");
       } else {
         this.util.exibirErro("Código inválido.");
       }
     }
+
+    reenviarCodigo() {
+      this.util.exibirSucesso("Código reenviado.");
+    }
+
+    cancelar() {
+      this.router.navigate(['/recuperarsenha']);
+    } 
 
 
 }
