@@ -14,6 +14,7 @@ import { RecuperarSenhaModule } from './modules/recuperar-senha/recuperar-senha.
 import {  ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 registerLocaleData(localePt);
 
@@ -34,6 +35,7 @@ registerLocaleData(localePt);
       closeButton: true
     }),
     RecuperarSenhaModule,
+    MatPasswordStrengthModule.forRoot()
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt' },

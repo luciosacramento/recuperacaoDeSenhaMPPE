@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NovaSenhaComponent } from './nova-senha.page';
+import { NovaSenhaPage } from './nova-senha.page';
 
 describe('NovaSenhaComponent', () => {
-  let component: NovaSenhaComponent;
-  let fixture: ComponentFixture<NovaSenhaComponent>;
+  let component: NovaSenhaPage;
+  let fixture: ComponentFixture<NovaSenhaPage>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NovaSenhaComponent]
+      declarations: [NovaSenhaPage]
     });
-    fixture = TestBed.createComponent(NovaSenhaComponent);
+    fixture = TestBed.createComponent(NovaSenhaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

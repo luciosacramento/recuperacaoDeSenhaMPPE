@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormGroup, FormControl, FormBuilder,FormsModule, ReactiveFormsModule,Validators, FormGroupDirective, NgForm } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { NgIf } from '@angular/common';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { Utils } from 'src/app/core/utils';
 import { Router } from '@angular/router';
 
@@ -20,42 +17,35 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-nova-senha',
   templateUrl: './nova-senha.page.html',
   styleUrls: ['./nova-senha.page.scss'],
-  standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatButtonModule,NgIf]
 })
-export class NovaSenhaComponent {
-  public profileForm: FormGroup;
-  public matcher:MyErrorStateMatcher = new MyErrorStateMatcher();
-  public novaSenhaFormControl:any|null = null
-  public repetirNovaSenhaFormControl:any|null = null
-  public telefone:string|null = "(71)991****44";
+export class NovaSenhaPage {
 
-  constructor(fb: FormBuilder, private util:Utils, private router: Router) { 
+  public showDetails: boolean | undefined;
+  
+  constructor(protected util:Utils,private router: Router) { }
 
-    this.novaSenhaFormControl =  new FormControl('',[Validators.required]);
-    this.repetirNovaSenhaFormControl =  new FormControl('',[Validators.required]);
+  ngOnInit() {
+  }
 
-    this.profileForm = new FormGroup({
-       novaSenhaFormControl: this.novaSenhaFormControl,
-       repetirNovaSenhaFormControl: this.repetirNovaSenhaFormControl,
-    });
+  onStrengthChanged(strength: number) {
+    console.log('password strength = ', strength);
+  }
 
-   }
-   
 
-   onSubmit() {
-     if (this.profileForm.valid && this.novaSenhaFormControl.value == "123") {
-       this.util.exibirSucesso("Código válido.");
-     } else {
-       this.util.exibirErro("Código inválido.");
-     }
-   }
 
-   reenviarCodigo() {
-     this.util.exibirSucesso("Código reenviado.");
-   }
+  onSubmit() {
+    /*if (this.profileForm.valid && this.smsFormControl.value == "123") {
+      this.util.exibirSucesso("Código válido.");
+    } else {
+      this.util.exibirErro("Código inválido.");
+    }*/
+  }
 
-   cancelar() {
-     this.router.navigate(['/recuperarsenha']);
-   } 
+  reenviarCodigo() {
+    this.util.exibirSucesso("Código reenviado.");
+  }
+
+  cancelar() {
+    this.router.navigate(['/recuperarsenha']);
+  } 
 }
