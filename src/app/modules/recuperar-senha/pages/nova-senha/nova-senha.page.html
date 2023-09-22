@@ -1,0 +1,36 @@
+<h4>Cadastre uma nova senha</h4>
+<span class="subtitulo" *ngIf="telefone">Foi enviado um código para o telefone {{telefone}}. Insira-o no campo abaixo e prossiga com a criação da nova senha.</span>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label for="novaSenha">Nova Senha</mat-label>
+        <input matInput  id="novaSenha" formControlName="novaSenhaFormControl" [formControl]="novaSenhaFormControl"  [errorStateMatcher]="matcher">
+        <mat-error *ngIf="novaSenhaFormControl.hasError('required')">
+          O Código de Segurança é <strong>obrigatório</strong>
+      </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label for="repetirNovaSenha">Nova Senha</mat-label>
+        <input matInput  id="repetirNovaSenha" formControlName="repetirNovaSenhaFormControl" [formControl]="repetirNovaSenhaFormControl"  [errorStateMatcher]="matcher">
+        <mat-error *ngIf="repetirNovaSenhaFormControl.hasError('required')">
+          O Código de Segurança é <strong>obrigatório</strong>
+      </mat-error>
+      </mat-form-field>
+      
+    </p>
+
+    <h4><a (click)="reenviarCodigo()">Reenviar Código</a></h4>
+
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+      <button mat-raised-button color="warn" type="submit">Enviar</button>
+  </div>
+  <div class="col-4">
+      <a (click)="cancelar()" class="bt-cancelar">Cancelar</a>
+  </div>
+</div>    
+
+</form>
+
