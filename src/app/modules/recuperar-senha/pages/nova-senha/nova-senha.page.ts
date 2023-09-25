@@ -23,6 +23,7 @@ export class NovaSenhaPage {
   public  novaSenhaFormControl:any|null = null
   public  repetirNovaSenhaFormControl:any|null = null
   public  matcher:MyErrorStateMatcher = new MyErrorStateMatcher();
+  private strongPassword:boolean = false;
 
   constructor(fb: FormBuilder, private util:Utils, private router: Router) { 
 
@@ -37,7 +38,13 @@ export class NovaSenhaPage {
    }
 
    ngOnInit() {
+    
   }
+
+  onPasswordStrengthChanged(event: boolean) {
+    this.strongPassword = event;
+  }
+
 
   onStrengthChanged(strength: number) {
     console.log('password strength = ', strength);

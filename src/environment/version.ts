@@ -1,2 +1,2 @@
-export const versao='1.00.000';
+export const versao='x.xx.xxx';
 

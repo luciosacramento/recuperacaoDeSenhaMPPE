@@ -4,20 +4,20 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label for="novaSenha">Nova Senha</mat-label>
-        <input matInput  id="novaSenha" formControlName="novaSenhaFormControl" [formControl]="novaSenhaFormControl"  [errorStateMatcher]="matcher">
-        <app-password-strength [passwordToCheck]="profileForm.value.novaSenhaFormControl" (passwordStrength)="onPasswordStrengthChanged($event)"></app-password-strength>
+        <input matInput  id="novaSenha" formControlName="novaSenhaFormControl" [formControl]="novaSenhaFormControl"  [errorStateMatcher]="matcher"/>
         <mat-error *ngIf="novaSenhaFormControl.hasError('required')">
           O Código de Segurança é <strong>obrigatório</strong>
-      </mat-error>
+        </mat-error>
       </mat-form-field>
-
+      
       <mat-form-field appearance="outline">
         <mat-label for="repetirNovaSenha">Nova Senha</mat-label>
         <input matInput  id="repetirNovaSenha" formControlName="repetirNovaSenhaFormControl" [formControl]="repetirNovaSenhaFormControl"  [errorStateMatcher]="matcher">
         <mat-error *ngIf="repetirNovaSenhaFormControl.hasError('required')">
           O Código de Segurança é <strong>obrigatório</strong>
-      </mat-error>
+        </mat-error>
       </mat-form-field>
+      <app-password-strength [passwordToCheck]="profileForm.value.novaSenhaFormControl" (passwordStrength)="onPasswordStrengthChanged($event)"></app-password-strength>
       
     </p>
 

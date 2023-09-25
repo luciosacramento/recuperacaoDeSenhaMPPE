@@ -10,6 +10,7 @@ export class PasswordStrengthComponent implements OnChanges {
   bar1: string | null = null;
   bar2: string | null = null;
   bar3: string | null = null;
+  public rules:string | null = null;
 
   @Input() public passwordToCheck: string | null = null;
 
@@ -33,6 +34,7 @@ export class PasswordStrengthComponent implements OnChanges {
 
     // 3
     const flags = [lowerLetters, upperLetters, numbers, symbols];
+    console.log(flags);
 
     // 4
     let passedMatches = 0;
@@ -73,16 +75,16 @@ export class PasswordStrengthComponent implements OnChanges {
   
         switch (pwdStrength) {
           case 10:
-            this.message = 'Poor';
+            this.message = 'Pobre';
             break;
           case 20:
-            this.message = 'Not Good';
+            this.message = 'Pouco bom';
             break;
           case 30:
-            this.message = 'Average';
+            this.message = 'Bom';
             break;
           case 40:
-            this.message = 'Good';
+            this.message = 'Excelente';
             break;
         }
       } else {
