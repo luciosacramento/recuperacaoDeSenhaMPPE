@@ -11,10 +11,9 @@ import { Utils } from './core/utils';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/httpConfig.interceptor';
 import { RecuperarSenhaModule } from './modules/recuperar-senha/recuperar-senha.module';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
-import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 registerLocaleData(localePt);
 
@@ -34,8 +33,7 @@ registerLocaleData(localePt);
       positionClass: 'toast-position',
       closeButton: true
     }),
-    RecuperarSenhaModule,
-    MatPasswordStrengthModule.forRoot()
+    RecuperarSenhaModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt' },

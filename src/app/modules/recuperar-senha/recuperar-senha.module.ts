@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RecuperarSenhaRoutingModule } from './recuperar-senha-routing.module';
 import { NovaSenhaPage } from './pages/nova-senha/nova-senha.page';
-import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import { PasswordStrengthComponent } from 'src/app/shared/password-strength/password-strength.component';
 
 @NgModule({
   declarations: [
-    NovaSenhaPage
+    NovaSenhaPage,
+    PasswordStrengthComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RecuperarSenhaRoutingModule,
-    MatPasswordStrengthModule
+    RecuperarSenhaRoutingModule
   ]
 })
 export class RecuperarSenhaModule {
