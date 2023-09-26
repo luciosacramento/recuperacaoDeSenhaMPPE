@@ -1,18 +1,35 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-password-strength',
   styleUrls: ['./password-strength.component.scss'],
   templateUrl: './password-strength.component.html',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PasswordStrengthComponent implements OnChanges {
+export class PasswordStrengthComponent implements OnChanges, OnInit {
   public bar0: string | null = null;
   bar1: string | null = null;
   bar2: string | null = null;
   bar3: string | null = null;
-  public rules:string | null = null;
+  public rules: string | null = null;
+  private rulesArray: any | null = null
+  private flags: any | null = null;
+
+  ngOnInit(): void {
+    this.rulesArray = { 
+      'length': 'Pelo menos '+this.minLength+' caracteres',
+      'specialChars': 'Pelo menos 1 caracter especial',
+      'upperCase': 'Pelo menos 1 letra maiúscula',
+      'lowerCase': 'Pelo menos 1 letra minúscula',
+      'numbers': 'Pelo menos 1 número'
+    }
+  }
 
   @Input() public passwordToCheck: string | null = null;
+  
+  @Input() public minLength: number = 5;
+
+  @Input() public specialChars: RegExp = /[$-/:-?{-~!"^_@`\[\]]/g;
 
   @Output() passwordStrength = new EventEmitter<boolean>();
 
@@ -22,7 +39,7 @@ export class PasswordStrengthComponent implements OnChanges {
   messageColor: string | null = null;
 
   checkStrength(password: string) {
-    // 1
+      // 1
     let force = 0;
 
     // 2
@@ -33,12 +50,11 @@ export class PasswordStrengthComponent implements OnChanges {
     const symbols = regex.test(password);
 
     // 3
-    const flags = [lowerLetters, upperLetters, numbers, symbols];
-    console.log(flags);
+    this.flags = [lowerLetters, upperLetters, numbers, symbols];
 
     // 4
     let passedMatches = 0;
-    for (const flag of flags) {
+    for (const flag of this.flags) {
       passedMatches += flag === true ? 1 : 0;
     }
 
@@ -55,7 +71,32 @@ export class PasswordStrengthComponent implements OnChanges {
     force = passedMatches === 3 ? Math.min(force, 30) : force;
     force = passedMatches === 4 ? Math.min(force, 40) : force;
 
+    this.setRule(password);
+
     return force;
+  }
+  
+
+  setRule(password:string) {
+
+    this.rules = '';
+    if(this.rulesArray){
+      
+          if (password.length < this.minLength) {
+            this.rules +=  `<p class='error'> <span>${this.rulesArray['length']}</span></p>`;
+          }else{
+            this.rules +=  `<p class='sucess'><span>${this.rulesArray['length']}</span></p>`;
+          }
+          this.rules +=  this.getPhrase(3,'specialChars');
+          this.rules +=  this.getPhrase(0,'lowerCase');
+          this.rules +=  this.getPhrase(1,'upperCase');
+          this.rules +=  this.getPhrase(2,'numbers');
+    }
+
+  }
+
+  getPhrase(flag:number,rule:string){
+    return this.flags[flag] ? `<p class='sucess'><span>${this.rulesArray[rule]}</span></p>` : `<p class='error'><span>${this.rulesArray[rule]}</span></p>`;
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void {

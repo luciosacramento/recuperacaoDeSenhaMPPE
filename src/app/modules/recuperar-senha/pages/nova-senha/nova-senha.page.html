@@ -1,23 +1,22 @@
 <h4>Cadastre uma nova senha</h4>
-<span class="subtitulo" >Foi enviado um código para o telefone. Insira-o no campo abaixo e prossiga com a criação da nova senha.</span>
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <p>
       <mat-form-field appearance="outline">
         <mat-label for="novaSenha">Nova Senha</mat-label>
-        <input matInput  id="novaSenha" formControlName="novaSenhaFormControl" [formControl]="novaSenhaFormControl"  [errorStateMatcher]="matcher"/>
+        <input type="password" matInput  id="novaSenha" formControlName="novaSenhaFormControl" [formControl]="novaSenhaFormControl"  [errorStateMatcher]="matcher"/>
         <mat-error *ngIf="novaSenhaFormControl.hasError('required')">
-          O Código de Segurança é <strong>obrigatório</strong>
+          Esse campo é <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline">
-        <mat-label for="repetirNovaSenha">Nova Senha</mat-label>
-        <input matInput  id="repetirNovaSenha" formControlName="repetirNovaSenhaFormControl" [formControl]="repetirNovaSenhaFormControl"  [errorStateMatcher]="matcher">
+        <mat-label for="repetirNovaSenha">Repetir Nova Senha</mat-label>
+        <input type="password" matInput  id="repetirNovaSenha" formControlName="repetirNovaSenhaFormControl" [formControl]="repetirNovaSenhaFormControl"  [errorStateMatcher]="matcher">
         <mat-error *ngIf="repetirNovaSenhaFormControl.hasError('required')">
-          O Código de Segurança é <strong>obrigatório</strong>
+          Esse campo é <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
-      <app-password-strength [passwordToCheck]="profileForm.value.novaSenhaFormControl" (passwordStrength)="onPasswordStrengthChanged($event)"></app-password-strength>
+      <app-password-strength [passwordToCheck]="profileForm.value.novaSenhaFormControl" [minLength]="5" [specialChars]="specialChars" (passwordStrength)="onPasswordStrengthChanged($event)"></app-password-strength>
       
     </p>
 

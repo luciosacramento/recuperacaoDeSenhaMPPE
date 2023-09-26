@@ -24,6 +24,7 @@ export class NovaSenhaPage {
   public  repetirNovaSenhaFormControl:any|null = null
   public  matcher:MyErrorStateMatcher = new MyErrorStateMatcher();
   private strongPassword:boolean = false;
+  public specialChars: RegExp = /[$-/:-?{-~!"^_@`\[\]]/g;
 
   constructor(fb: FormBuilder, private util:Utils, private router: Router) { 
 
@@ -51,16 +52,13 @@ export class NovaSenhaPage {
   }
 
   onSubmit() {
-    if (this.profileForm.valid ) {
-      this.util.exibirSucesso("Código válido.");
+    if (this.novaSenhaFormControl.value == this.repetirNovaSenhaFormControl.value) {
+      this.util.exibirSucesso("Nova senha cadastrada com sucesso.");
     } else {
-      this.util.exibirErro("Código inválido.");
+      this.util.exibirErro("As senhas não conferem.");
     }
   }
 
-  reenviarCodigo() {
-    this.util.exibirSucesso("Código reenviado.");
-  }
 
   cancelar() {
     this.router.navigate(['/recuperarsenha']);
