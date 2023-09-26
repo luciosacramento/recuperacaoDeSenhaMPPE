@@ -1,0 +1,46 @@
+<h4 class="single">Marque os dados que estão corretos</h4>
+<form (ngSubmit)="onSubmit()">
+
+
+        <section >
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label for="pai">Nome do pai</mat-label>
+              <input matInput value="Jo***Al***Fe****" id="pai" type="text" disabled >
+            </mat-form-field>
+            <mat-checkbox class="checkbox"  />        
+        </section>
+        <section >
+            <mat-form-field appearance="outline">
+                <mat-label for="email">E-mail pessoal</mat-label>
+                <input matInput value="lU***@G***.C****" id="email"  type="text" disabled>
+            </mat-form-field>
+            <mat-checkbox class="checkbox"  />
+        </section>
+        <section >
+            <mat-form-field appearance="outline">
+                <mat-label for="ano">Ano de nomeação</mat-label>
+                <input type="number" matInput value="2020" id="ano"  type="text" disabled>
+            </mat-form-field>
+            <mat-checkbox class="checkbox"  />
+        </section>
+        <section >
+            <mat-form-field appearance="outline">
+                <mat-label for="ano">Ano de nascimento</mat-label>
+                <input matInput value="1985" id="ano"  type="text" disabled>    
+            </mat-form-field>
+            <mat-checkbox class="checkbox"  />
+        </section>
+
+
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <button mat-raised-button color="warn" type="submit">Enviar</button>
+    </div>
+    <div class="col-4">
+        <a href="#" class="bt-cancelar">Cancelar</a>
+    </div>
+  </div>    
+
+</form>
+
