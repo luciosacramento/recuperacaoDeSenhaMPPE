@@ -10,7 +10,7 @@ import { QuestionarioPage } from './pages/questionario/questionario.page';
   declarations: [
     NovaSenhaPage,
     PasswordStrengthComponent,
-    QuestionarioPage
+    QuestionarioPage,
   ],
   imports: [
     CommonModule,

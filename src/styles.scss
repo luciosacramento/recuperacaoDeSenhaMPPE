@@ -2,7 +2,7 @@
 @import 'ngx-toastr/toastr';
 @import 'variablesFunctions.scss';
 
-html, body { height: 100%; }
+html,body { height: 100%;  display: table; width: 100%;}
 
 .toast-position{
     top: 50px;
@@ -12,14 +12,20 @@ html, body { height: 100%; }
 
   body {
     background:linear-gradient(to top, $color-red, #fff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+   
 }
 
 app-root{
   width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 h4{
@@ -55,7 +61,7 @@ h4{
 #aviso-esqueceu{
     color: #545F71;
     font-size: 12px;
-    margin-top: 20px;
+    margin: 20px auto;
     width: 100%;
     max-width: 450px;
     padding: 20px;
@@ -130,6 +136,9 @@ h4{
   .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background, .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
     border-color: #50A481 !important;
     background-color:  #50A481 !important;
+}
+.mat-mdc-raised-button.mat-warn {
+  --mdc-protected-button-container-color: #983332;
 }
 
   

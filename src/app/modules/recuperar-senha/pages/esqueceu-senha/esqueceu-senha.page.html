@@ -18,7 +18,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label for="cpf">CPF</mat-label>
-            <input type="number" matInput placeholder="CPF" id="cpf" formControlName="cpfFormControl" [formControl]="cpfFormControl"  [errorStateMatcher]="matcher" placeholder="Ex. 99999999999">
+            <input   mask="000.000.000-00"  [showMaskTyped]="true" placeHolderCharacter="*" matInput placeholder="CPF" id="cpf" formControlName="cpfFormControl" [formControl]="cpfFormControl"  [errorStateMatcher]="matcher" >
             <mat-error *ngIf="cpfFormControl.hasError('required')">
                 CPF é <strong>obrigatório</strong>
             </mat-error>

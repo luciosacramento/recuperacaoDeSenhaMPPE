@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { NgIf } from '@angular/common';
 import { Utils } from 'src/app/core/utils';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import { Validadores } from 'src/app/core/validadores';
 import { Router } from '@angular/router';
@@ -22,7 +23,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './esqueceu-senha.page.html',
   styleUrls: ['./esqueceu-senha.page.scss'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatButtonModule,NgIf]
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatButtonModule,NgIf, NgxMaskDirective, NgxMaskPipe],
+  providers: [
+    provideNgxMask(),
+  ],
 })
 export class EsqueceuSenhaPage {
 

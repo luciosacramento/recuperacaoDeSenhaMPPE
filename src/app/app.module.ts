@@ -13,7 +13,6 @@ import { HttpConfigInterceptor } from './core/httpConfig.interceptor';
 import { RecuperarSenhaModule } from './modules/recuperar-senha/recuperar-senha.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 registerLocaleData(localePt);
 
@@ -27,8 +26,6 @@ registerLocaleData(localePt);
     AppRoutingModule,
     ReactiveFormsModule,
     MatIconModule,
-    NgxMaskDirective,
-    NgxMaskPipe,
     ToastrModule.forRoot({
       positionClass: 'toast-position',
       closeButton: true
@@ -44,7 +41,6 @@ registerLocaleData(localePt);
     Utils,
     {provide: ErrorHandler, useClass: GlobalErrorHandler},
     {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
-    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })
