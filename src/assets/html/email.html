@@ -1,0 +1,50 @@
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content{
+    text-align: justify;
+}
+
+.button-container {
+    text-align: center;
+}
+.reset-button {
+    background-color: #93231A;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class='container'>
+<div class='header'>
+    <img src="logo-mppe.png" alt="">
+    <hr>
+<h4>Recuperação de Senha</h4>
+</div>
+<div class='content'>
+<p>Olá, {nome}!</p>
+<p>Você está recebendo este e-mail porque solicitou o cadastramento de uma nova senha de acesso aos sistemas do MPPE. Caso não tenha sido você, desconsidere esse e-mail.</p>
+<p>Antes de cadastrar a nova senha, certifique-se que você tem permissão de acesso ao sistema. Após o cadastramento, a nova senha será alterada para todos os sistemas onde você usa o login informado.</p>
+<p>Para seguir com o cadastramento da nova senha, clique no link abaixo:</p>
+</div>
+<p><a class='reset-button' href='{resetLink}'>Cadastrar Nova Senha</a></p>
+</div>
+</body>
+</html>
